@@ -1,0 +1,23 @@
+.active{
+    background-color: rgb(82, 151, 149);
+    color: white;
+}
+
+.router-btns{
+    border: 1.5px solid rgb(185, 238, 229);
+    border-radius: 1rem;
+}
+button{
+    font-size: 1.5rem;
+    margin: 1.5rem 1rem;
+    border-radius: 0.3rem;
+    padding: 0.5rem;
+    background-color: rgb(191, 230, 229);
+    color: rgb(56, 56, 56);
+}
+
+button:hover
+{
+    background-color: rgb(176, 228, 226);   
+    color: rgb(56, 56, 56);
+}

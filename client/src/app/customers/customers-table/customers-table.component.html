@@ -1,0 +1,31 @@
+<table>
+    <thead>
+        <th *ngFor = "let col of cols">{{col|uppercase}}</th>
+        <th>Operations</th>
+    </thead>
+
+    <tr #row *ngFor = "let customer of customers;let i = index" [contentEditable] = "isEditable[i]">
+        <td id="name">{{customer.name}}</td>
+        <td id="website">{{customer.website}}</td>
+        <td id="address">{{customer.address}}</td>
+        <td [contentEditable] = "false">{{customer.created_on | date : 'medium'}}</td>
+        <td [contentEditable] = "false">{{customer.modified_on | date : 'medium'}}</td>
+
+        <td [contentEditable] = "false">
+                <button class="edit" (click) = "update(i,customer)" *ngIf = "!isEditable[i]" >Edit</button>
+                <button class="delete" (click) = "delete(i,customer)" *ngIf = "!isEditable[i]" >Delete</button>
+                
+                <button class="save" (click) = "save(i,customer,row)" *ngIf = "isEditable[i]">Save</button>
+                <button class="cancel" (click) = "cancel(i,customer)" *ngIf = "isEditable[i]">Cancel</button>
+
+                <button class="users" (click) = "showUsers(customer)" >Show Users</button>     
+        </td>
+
+    </tr>
+</table>
+
+<div>
+    <button class="add-btn" *ngIf = "!addNewCustomer" (click) = "addNewCustomer = true">Add new Customer</button>
+    <new-customer *ngIf = "addNewCustomer" (onSubmit) = "create($event)"></new-customer>
+    <button class="back" *ngIf = "addNewCustomer" (click) = "addNewCustomer = false">Back</button>
+</div>

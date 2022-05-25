@@ -1,0 +1,9 @@
+<button class="load-btn" *ngIf = "!showTable" (click) = "loadCustomers()">Load Customers</button>
+<div *ngIf = "showTable">
+    <button class="refresh-btn" (click) = "refresh()">Refresh</button> 
+    <customers-table [customerList] = "customers" (show) = "showUsers($event)" (edit) = "update($event)" (deleteCustomer) = "delete($event)" (add) = "create($event)"></customers-table>
+</div>
+
+<div *ngIf = "show">
+    <app-users [users] = "usersbyCustomer"></app-users>
+</div>

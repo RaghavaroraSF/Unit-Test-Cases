@@ -1,0 +1,60 @@
+<table>
+    <thead>
+        <th>First Name</th>
+        <th>Middle Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Role</th>
+        <th>Address</th>
+        <th>Customer</th>
+        <th>Created_On</th>
+        <th>Modified_On</th>
+        <th>Operations</th>
+    </thead>
+
+    <tr #row *ngFor = "let user of users;let i = index" [contentEditable] = "isEditable[i]">
+        <td id="fName">{{user.firstname}}</td>
+        <td id="mName">{{user.middlename}}</td>
+        <td id="lName">{{user.lastname}}</td>
+        <td id="email">{{user.email}}</td>
+        <td id="phone">{{user.phone}}</td>
+
+        <td *ngIf= "!isEditable[i]">{{user.role}}</td>
+        <td *ngIf= "isEditable[i]" id= "roleContainer" [contentEditable] = "false">
+            <select name="roles">
+                <option *ngFor = "let role of roleList" [value] = "role.key">{{role.name}}</option>
+            </select>
+        </td>
+
+        <td id ="address">{{user.address}}</td>
+
+        <td *ngIf= "!isEditable[i]">{{user.customerId}}</td>
+        <td *ngIf= "isEditable[i]" id="customerContainer" [contentEditable] = "false">
+            <select name="customers">
+                <option *ngFor = "let cust of customerList" [value] = "cust.id">{{cust.name}}</option>
+            </select>
+        </td>
+
+        <td [contentEditable] = "false">{{user.created_on | date : 'medium'}}</td>
+        <td [contentEditable] = "false">{{user.modified_on | date : 'medium'}}</td>
+
+        <td *ngIf = "!isEditable[i]" [contentEditable] = "false">
+                <button class="edit" (click) = "update(i,user)">Edit</button>
+                <button class="delete" (click) = "delete(i,user)">Delete</button>
+            
+        </td>
+
+        <td *ngIf = "isEditable[i]" [contentEditable] = "false">
+           
+                <button class="save" (click) = "save(i,user,row)">Save</button>
+                <button class="cancel" (click) = "cancel(i,user)">Cancel</button>
+        </td>
+    </tr>
+</table>
+
+<div *ngIf = "canCreate">
+    <button class="add-btn" *ngIf = "!addNewUser" (click) = "addNewUser = true">Add new User</button>
+    <new-user *ngIf = "addNewUser" [roles] = "roleList" [customers] = "customerList" (onSubmit) = "create($event)"></new-user>
+    <button class="back" *ngIf = "addNewUser" (click) = "addNewUser = false">Back</button>
+</div>

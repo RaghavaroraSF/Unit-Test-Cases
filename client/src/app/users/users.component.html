@@ -1,0 +1,17 @@
+<button class="load-btn" *ngIf = "!showTable && !showUsers && loadBtn" (click) = "loadUsers()">Load Users</button>
+
+<div *ngIf = "showTable && !showUsers">
+    <button class="refresh-btn" (click) = "refresh()">Refresh</button> 
+    <users-table [users] = "users" [roleList] = "roles" [customerList] = "customers"
+    (delete) = "delete($event)" (update) = "update($event)" (add) = "create($event)"></users-table>
+</div>
+
+
+<div *ngIf = "showUsers">
+    <users-table [users] = "usersByCustomer" [roleList] = "roles" [customerList] = "customers"
+    (delete) = "delete($event)" (update) = "update($event)" (add) = "create($event)"
+    [canCreate] = "false"></users-table>
+
+    <button (click) = "back()">Back</button>
+</div>
+

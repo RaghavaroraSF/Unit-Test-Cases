@@ -1,0 +1,39 @@
+
+table{
+    border: 0.2rem solid black;
+    margin-left: 7%;
+}
+  th,td{
+      border: 0.2rem solid black;
+      font-size: 1.2rem;
+      padding: 0.3rem;
+      background-color: rgb(191, 230, 229);
+  }
+  
+  .edit,.delete,.save,.cancel{
+      font-size: 1.5rem;
+      margin: auto 0.5rem;
+      border-radius: 0.25rem;
+      padding: 0.25rem;
+      background-color: rgb(64, 72, 99);
+      color: white;
+  }
+  
+  .edit:hover,.delete:hover,.save:hover,.cancel:hover{
+      background-color: rgb(44, 57, 99);
+  }
+  
+  .add-btn,.back{
+    font-size: 1.75rem;
+    margin: 2rem 44%;
+    border-radius: 0.3rem;
+    padding: 0.5rem;
+    background-color: rgb(191, 230, 229);
+    color: rgb(56, 56, 56);
+}
+
+.add-btn:hover
+{
+    background-color: rgb(176, 228, 226);   
+}
+
